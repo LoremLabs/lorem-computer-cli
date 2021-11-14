@@ -39,7 +39,7 @@ const cli = meow(defaultHelp, {
   },
 });
 
-if (cli.input.length === 0) {
+if ((cli.input.length === 0) || (cli.input[0] === "help")) {
   process.stderr.write(`${defaultHelp}\n`);
   process.exit(0);
 }
