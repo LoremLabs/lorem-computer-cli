@@ -1,11 +1,11 @@
-# lorem-cli
+# lorem-computer
 
 > Lorem: Distributed Computing CLI
 
 ## Install
 
 ```
-$ npm install --global lorem-cli
+$ npm install --global lorem-computer
 ```
 
 ## Usage

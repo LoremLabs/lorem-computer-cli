@@ -1,6 +1,6 @@
 {
   "name": "lorem-computer",
-  "version": "0.0.1-0",
+  "version": "0.0.1-1",
   "description": "Lorem command-line tool",
   "license": "MIT",
   "repository": "LoremLabs/lorem-cli",
@@ -11,7 +11,7 @@
   },
   "type": "module",
   "bin": {
-    "lorem": "lorem-cli.js"
+    "lorem": "lorem-computer-cli.js"
   },
   "engines": {
     "node": ">=12"
@@ -24,7 +24,7 @@
     "test": "echo nyet && exit 0"
   },
   "files": [
-    "lorem-cli.js"
+    "lorem-computer-cli.js"
   ],
   "keywords": [
     "cli",
