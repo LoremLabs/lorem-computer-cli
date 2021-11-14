@@ -15,9 +15,13 @@ const lorem = async (action, flags) => {
   // DISK: ${chalk.yellow('70%')}
   // `);
 
-  if (action === "unicorns") {
-    const outputString = flags.rainbow ? "🌈 unicorns 🌈" : "unicorns";
-    log(outputString);
+  // actions: run = execute command
+  //          list = list commands
+
+  if (action === "run") {
+    flags.debug && log(chalk.green("running `run`"));
+  } else if (action === "list") {
+    flags.debug && log(chalk.green("running `list`"));
   } else {
     throw new Error("command not implemented");
   }

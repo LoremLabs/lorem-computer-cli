@@ -1,8 +1,14 @@
 #!/usr/bin/env node
 import meow from "meow";
 import lorem from "./src/index.js";
+import updateNotifier from "update-notifier";
+
+import fs from "fs";
+const pkgJson = JSON.parse(fs.readFileSync("./package.json"));
 
 const defaultHelp = `
+  lorem: command line access to lorem.computer
+
   Usage
     $ lorem [input]
 
@@ -32,4 +38,9 @@ if (cli.input.length === 0) {
   process.exit(0);
 }
 
-lorem(cli.input[0], cli.flags); // action, flags
+lorem(cli.input[0], cli.flags, cli.argv); // action, flags
+
+updateNotifier({
+  pkg: pkgJson,
+  defer: true,
+}).notify();
