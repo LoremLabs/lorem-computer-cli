@@ -20,6 +20,7 @@
     "pretty": "prettier --check .",
     "lint": "prettier --check . && eslint --ignore-path .gitignore .",
     "lint:fix": "prettier --write . && eslint --fix --ignore-path .gitignore .",
+    "npm": "np",
     "test": "echo nyet && exit 0"
   },
   "files": [
