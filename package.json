@@ -1,6 +1,6 @@
 {
   "name": "lorem-computer",
-  "version": "0.0.0",
+  "version": "0.0.1-0",
   "description": "Lorem command-line tool",
   "license": "MIT",
   "repository": "LoremLabs/lorem-cli",
