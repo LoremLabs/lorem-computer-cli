@@ -1,5 +1,5 @@
 {
-  "name": "lorem-cli",
+  "name": "lorem-computer",
   "version": "0.0.0",
   "description": "Lorem command-line tool",
   "license": "MIT",
@@ -20,7 +20,7 @@
     "pretty": "prettier --check .",
     "lint": "prettier --check . && eslint --ignore-path .gitignore .",
     "lint:fix": "prettier --write . && eslint --fix --ignore-path .gitignore .",
-    "npm": "np",
+    "release": "np",
     "test": "echo nyet && exit 0"
   },
   "files": [
