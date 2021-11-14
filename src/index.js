@@ -1,29 +1,23 @@
 import chalk from "chalk";
 import getStdin from "get-stdin";
 
+import * as actions from "./actions/index.js"; // add new top level actions here
+
 const log = console.log;
 
-const lorem = async (action, flags) => {
+// call the action with the given name
+const lorem = async (commandInput) => {
   // read from STDIN. stdin = '' if no input
   const stdin = await getStdin();
 
-  flags.debug && log(chalk.green(JSON.stringify({ action, flags, stdin })));
+  const { action, flags, input } = commandInput;
+  flags.debug && log(chalk.green(JSON.stringify({ action, flags, stdin, input })));
 
-  // log(`
-  // CPU: ${chalk.red('90%')}
-  // RAM: ${chalk.green('40%')}
-  // DISK: ${chalk.yellow('70%')}
-  // `);
-
-  // actions: run = execute command
-  //          list = list commands
-
-  if (action === "run") {
-    flags.debug && log(chalk.green("running `run`"));
-  } else if (action === "list") {
-    flags.debug && log(chalk.green("running `list`"));
+  if (Object.prototype.hasOwnProperty.call(actions, action)) {
+      actions[action].exec({ ...commandInput, stdin });
   } else {
-    throw new Error("command not implemented");
+      log(chalk.red(`Action ${action} not found`));
+      process.exit(1);
   }
 };
 

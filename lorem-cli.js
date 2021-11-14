@@ -1,7 +1,9 @@
 #!/usr/bin/env node
 import meow from "meow";
-import lorem from "./src/index.js";
 import updateNotifier from "update-notifier";
+
+import config from "./src/config.js";
+import lorem from "./src/index.js";
 
 import fs from "fs";
 const pkgJson = JSON.parse(fs.readFileSync("./package.json"));
@@ -22,13 +24,9 @@ const defaultHelp = `
 const cli = meow(defaultHelp, {
   importMeta: import.meta,
   flags: {
-    rainbow: {
-      type: "boolean",
-      alias: "r",
-    },
     debug: {
       type: "boolean",
-      default: true,
+      default: false,
     },
   },
 });
@@ -38,7 +36,7 @@ if (cli.input.length === 0) {
   process.exit(0);
 }
 
-lorem(cli.input[0], cli.flags, cli.argv); // action, flags
+lorem({ action: cli.input[0], flags: cli.flags, input: cli.input, config });
 
 updateNotifier({
   pkg: pkgJson,
