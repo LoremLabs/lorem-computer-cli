@@ -1,0 +1,6 @@
+# Release
+
+```
+npm run release
+```
+
