@@ -1,5 +1,6 @@
 const log = console.log;
 
+// config: get, set, del 
 const exec = (input) => {
   if (input.input[1] === "get") {
     log(`${JSON.stringify(input.config.get())}`);

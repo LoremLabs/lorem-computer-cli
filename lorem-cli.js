@@ -11,6 +11,8 @@ const pkgJson = JSON.parse(fs.readFileSync("./package.json"));
 const defaultHelp = `
   lorem: command line access to lorem.computer
 
+  $ lorem --help
+
   Usage
     $ lorem [input]
 
@@ -19,8 +21,15 @@ const defaultHelp = `
 
   Examples
     $ lorem
-  `;
 
+    Config
+    $ lorem config get
+    $ lorem config set key.subkey val
+    $ lorem config del key
+
+`;
+
+  
 const cli = meow(defaultHelp, {
   importMeta: import.meta,
   flags: {

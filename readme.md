@@ -21,4 +21,10 @@ $ lorem --help
 
   Examples
     $ lorem
+
+    Config
+    $ lorem config get
+    $ lorem config set key.subkey val
+    $ lorem config del key
+
 ```
