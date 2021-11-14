@@ -11,13 +11,14 @@ const lorem = async (commandInput) => {
   const stdin = await getStdin();
 
   const { action, flags, input } = commandInput;
-  flags.debug && log(chalk.green(JSON.stringify({ action, flags, stdin, input })));
+  flags.debug &&
+    log(chalk.green(JSON.stringify({ action, flags, stdin, input })));
 
   if (Object.prototype.hasOwnProperty.call(actions, action)) {
-      actions[action].exec({ ...commandInput, stdin });
+    actions[action].exec({ ...commandInput, stdin });
   } else {
-      log(chalk.red(`Action ${action} not found`));
-      process.exit(1);
+    log(chalk.red(`Action ${action} not found`));
+    process.exit(1);
   }
 };
 

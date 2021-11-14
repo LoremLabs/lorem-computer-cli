@@ -29,7 +29,6 @@ const defaultHelp = `
 
 `;
 
-  
 const cli = meow(defaultHelp, {
   importMeta: import.meta,
   flags: {

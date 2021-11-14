@@ -13,10 +13,10 @@ const schema = {
   // 	type: 'string',
   // 	format: 'url'
   // }
-//   execs: {
-//     type: "number",
-//     minimum: 0,
-//   },
+  //   execs: {
+  //     type: "number",
+  //     minimum: 0,
+  //   },
 };
 
 const config = new Conf({
@@ -33,5 +33,5 @@ const config = new Conf({
 // config.set({
 // 	execs: (1 + config.get("execs") || 0),
 //   });
-  
+
 export default config;
