@@ -17,6 +17,13 @@ const schema = {
   //     type: "number",
   //     minimum: 0,
   //   },
+  namespaces: {
+    type: "array",
+    items: {
+      type: "string",
+    },
+    default: [],
+  },
 };
 
 const config = new Conf({
