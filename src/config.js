@@ -22,7 +22,7 @@ const schema = {
     items: {
       type: "string",
     },
-    default: [],
+    default: ["cmd.lorem.computer"],
   },
 };
 

@@ -2,10 +2,14 @@
 import meow from "meow";
 import updateNotifier from "update-notifier";
 
+import dotenv from "dotenv";
+dotenv.config();
+
+import fs from "fs";
+
 import config from "./src/config.js";
 import lorem from "./src/index.js";
 
-import fs from "fs";
 const pkgJson = JSON.parse(fs.readFileSync("./package.json"));
 
 const defaultHelp = `
@@ -18,9 +22,14 @@ const defaultHelp = `
 
   Options
     --debug=[bool]  [Default: false]
+    --help          [Default: false]
+    --__web3StorageToken=[string]  [Default: null]
 
     Examples
     $ lorem
+
+    Command
+    $ lorem cmd create --createFile="./path/to/file.js" --name="commandname" [--__web3Storage=true]
 
     Config
     $ lorem config get
@@ -35,10 +44,10 @@ const defaultHelp = `
 const cli = meow(defaultHelp, {
   importMeta: import.meta,
   flags: {
-    debug: {
-      type: "boolean",
-      default: false,
-    },
+    // debug: {
+    //   type: "boolean",
+    //   default: false,
+    // }
   },
 });
 
