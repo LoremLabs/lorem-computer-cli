@@ -14,8 +14,12 @@ const exec = (context) => {
       // set value
       if (context.input.length === 4) {
         context.config.set(context.input[2], context.input[3]);
+      } else if (context.input.length === 3 && context.stdin.length > 0) {
+        context.config.set(context.input[2], context.stdin);
       } else {
-        log("Usage: lorem config set key val");
+        log(
+          chalk.red("Error: missing value. Set via STDIN or as a parameter.")
+        );
         process.exit(2);
       }
     }
@@ -36,7 +40,7 @@ const exec = (context) => {
       process.exit(2);
     }
   } else {
-    log("Usage: lorem config [get|set]");
+    log("Usage: lorem config [get|set|reset|del]");
     process.exit(2);
   }
 };

@@ -1,0 +1,11 @@
+{
+  "name": "preserve-url",
+  "request": {
+    "endpoint": "http://api.dev.lorem.computer:3000/api/preserve-url"
+  },
+  "meta": {
+    "contact": "",
+    "description": "Local Test for preserve-url"
+  },
+  "v": 1
+}

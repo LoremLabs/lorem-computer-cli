@@ -64,11 +64,20 @@ const exec = async (context) => {
         `);
       } else {
         // else return skeleton to fill out with instructions
+        let newCmd = context.input[2] || skeleton.name;
+        let description = context.flags.description || skeleton.meta.description;
+        let endpoint = context.flags.endpoint || skeleton.request.endpoint;
+        let contact = context.flags.contact || skeleton.meta.contact;
         process.stderr.write(
           chalk.yellow(
-            `lorem cmd create > mynewcommand.json\n\nThen fill out and upload with\n\nlorem cmd create --createFile=./mynewcommand.json\n\n`
+            `lorem cmd create > ${newCmd}.json\n\nThen fill out and upload with\n\nlorem cmd create --createFile=./${newCmd}.json\n\n`
           )
         );
+        skeleton.name = newCmd;
+        skeleton.meta.description = description;
+        skeleton.request.endpoint = endpoint;
+        skeleton.meta.contact = contact;
+
         log(JSON.stringify(skeleton, null, 2));
         process.exit(0);
       }
