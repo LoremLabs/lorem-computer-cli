@@ -1,11 +1,11 @@
 {
-  "name": "preserve-url",
+  "name": "echo",
   "request": {
-    "endpoint": "http://api.dev.lorem.computer:3000/api/preserve-url"
+    "endpoint": "http://api.dev.lorem.computer:3000/api/echo"
   },
   "meta": {
     "contact": "",
-    "description": "Local Test for preserve-url"
+    "description": "Local Test to echo input"
   },
   "v": 1
 }

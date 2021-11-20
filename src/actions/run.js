@@ -18,6 +18,44 @@ const parseCommand = (data) => {
   return command;
 };
 
+const processResponse = async (context, data) => {
+  // simple response
+  if (data.stdout) {
+    log(data.stdout);
+  }
+  if (data.stderr) {
+    log(chalk.red(data.stderr));
+  }
+  
+  // allow multiple actions
+  if (data.actions) {
+    let action;
+    let i = 0;
+    for (i in data.actions) {
+      action = data.actions[i];
+      context.debugLog(`Action ${JSON.stringify(action)}`);
+
+      if (action.type === "redirect") {
+        context.redirect(action.url);
+      }
+      if (action.type === "stdout") {
+        if (action.color) {
+          process.stdout.write(chalk[action.color](action.msg + "\n"));
+        } else {
+          process.stdout.write(action.msg + "\n");
+        }
+      }
+      if (action.type === "stderr") {
+        if (action.color) {
+          process.stderr.write(chalk[action.color](action.msg + "\n"));
+        } else {
+          process.stderr.write(action.msg + "\n");
+        }
+      }
+    }
+  }
+};
+
 const doCommand = async (context, command) => {
   context.debugLog(`Running ${command.name}`);
 
@@ -35,22 +73,30 @@ const doCommand = async (context, command) => {
   if (context.input) {
     params.append("input", JSON.stringify(context.input));
   }
+  if (context.stdin) {
+    params.append("stdin", context.stdin);
+  }
 
   // TODO: add headers for signatures, etc
   const url = command.request.endpoint;
   if (url.startsWith("http")) {
-    const response = await fetch(`${url}?${params.toString()}`);
+    const fullUrl = `${url}?${params.toString()}`;
+    context.debugLog(`Fetching ${fullUrl}`);
+
+    const response = await fetch(fullUrl);
+
     if (response.status !== 200) {
       log(chalk.red(`Error: ${response.status}`));
       log(chalk.red(`${response.statusText}`));
       process.exit(1);
     }
-    log(response);
+    const data = await response.json();
+    context.debugLog('response', data);
+    await processResponse(context, data);
   } else {
     log(`${chalk.red("ERROR:")} ${url} protocol not supported`);
     process.exit(1);
   }
-  console.log(params, context);
 };
 
 const runLocal = async (context, data) => {

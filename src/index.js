@@ -2,7 +2,7 @@ import chalk from "chalk";
 import getStdin from "get-stdin";
 
 import * as actions from "./actions/index.js"; // add new top level actions here
-import { setFlagDefaults } from "./lib/env.js";
+import { setFlagDefaults, setContextFunctions } from "./lib/env.js";
 
 const log = console.log;
 
@@ -17,10 +17,8 @@ const lorem = async (commandInput) => {
 
   if (Object.prototype.hasOwnProperty.call(actions, action)) {
       const context = { ...commandInput, stdin };
-      context.debugLog = (...args) => {
-        context.flags.debug && log(chalk.blue("[DEBUG]"), ...args);
-      };
     
+      setContextFunctions(context); 
       setFlagDefaults(context); // allow flag defaults to be set from ENV
       actions[action].exec(context);
   } else {
