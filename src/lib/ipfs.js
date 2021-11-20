@@ -49,7 +49,7 @@ const uploadIpfsWeb3Storage = async ({ token, payload }) => {
 
   // Upload to IPFS
   // Return the IPFS hash of the data
-  const storage = new web3Storage({ token });
+  const storage = new Web3Storage({ token });
   const file = packageCommand({ commandJson: payload });
   const cid = await storage.put(file);
 
