@@ -1,16 +1,16 @@
 #!/usr/bin/env node
 import meow from "meow";
-import updateNotifier from "update-notifier";
+// import updateNotifier from "update-notifier";
 
 import dotenv from "dotenv";
 dotenv.config();
 
-import fs from "fs";
+// import fs from "fs";
 
 import config from "./src/config.js";
 import lorem from "./src/index.js";
 
-const pkgJson = JSON.parse(fs.readFileSync("./package.json"));
+// const pkgJson = JSON.parse(fs.readFileSync("./package.json"));
 
 const defaultHelp = `
   lorem: command line access to lorem.computer
@@ -59,7 +59,7 @@ if (cli.input.length === 0 || cli.input[0] === "help") {
 
 lorem({ action: cli.input[0], flags: cli.flags, input: cli.input, config });
 
-updateNotifier({
-  pkg: pkgJson,
-  defer: true,
-}).notify();
+// updateNotifier({
+//   pkg: pkgJson,
+//   defer: true,
+// }).notify();
