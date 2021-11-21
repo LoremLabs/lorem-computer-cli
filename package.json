@@ -25,7 +25,6 @@
     "test": "echo nyet && exit 0"
   },
   "files": [
-    "lorem-computer-cli.js"
   ],
   "keywords": [
     "cli",
