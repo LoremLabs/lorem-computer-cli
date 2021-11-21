@@ -1,6 +1,6 @@
 import chalk from "chalk";
 import fetch from "node-fetch";
-import FormData from "form-data";
+// import FormData from "form-data";
 
 import { bestNamespace } from "../lib/directory.js";
 import { getFileIpfs } from "../lib/ipfs.js";
@@ -37,7 +37,7 @@ const processResponse = async (context, data) => {
       context.debugLog(`Action ${JSON.stringify(action)}`);
 
       if (action.type === "redirect") {
-        context.redirect(action.url);
+        context.redirect(action.url, action);
       }
       if (action.type === "stdout") {
         if (action.color) {

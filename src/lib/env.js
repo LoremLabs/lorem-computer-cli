@@ -18,7 +18,7 @@ const setContextFunctions = (context) => {
     context.flags.debug && console.log(chalk.blue("[DEBUG]"), ...args);
   };
 
-  context.redirect = async (url) => {
+  context.redirect = async (url, action) => {
     context.debugLog(`Url: ${url}`);
     const response = await prompts([
       {
@@ -30,7 +30,13 @@ const setContextFunctions = (context) => {
       },
     ]);
     if (response.confirmtoggle) {
-      await open(url);
+      if (action.incognito) {
+        await open(url, {
+          app: { name: "google chrome", arguments: ["--incognito"] },
+        });
+      } else {
+        await open(url);
+      }
     }
   };
 };
