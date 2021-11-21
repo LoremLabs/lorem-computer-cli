@@ -1,0 +1,11 @@
+{
+  "name": "covalent",
+  "request": {
+    "endpoint": "https://api.lorem.computer/api/covalent"
+  },
+  "meta": {
+    "contact": "github: @sangheestyle",
+    "description": ""
+  },
+  "v": 1
+}

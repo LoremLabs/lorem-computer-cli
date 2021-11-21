@@ -1,0 +1,11 @@
+{
+  "name": "echo",
+  "request": {
+    "endpoint": "https://api.lorem.computer/api/echo"
+  },
+  "meta": {
+    "contact": "github: @mankins",
+    "description": ""
+  },
+  "v": 1
+}

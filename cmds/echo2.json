@@ -1,0 +1,11 @@
+{
+  "name": "echo2",
+  "request": {
+    "endpoint": "https://api.endpoint/here"
+  },
+  "meta": {
+    "contact": "@me on github",
+    "description": "desc"
+  },
+  "v": 1
+}
