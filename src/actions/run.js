@@ -26,7 +26,7 @@ const processResponse = async (context, data) => {
   if (data.stderr) {
     log(chalk.red(data.stderr));
   }
-  
+
   // allow multiple actions
   if (data.actions) {
     let action;
@@ -91,7 +91,7 @@ const doCommand = async (context, command) => {
       process.exit(1);
     }
     const data = await response.json();
-    context.debugLog('response', data);
+    context.debugLog("response", data);
     await processResponse(context, data);
   } else {
     log(`${chalk.red("ERROR:")} ${url} protocol not supported`);

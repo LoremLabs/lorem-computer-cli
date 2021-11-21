@@ -65,7 +65,8 @@ const exec = async (context) => {
       } else {
         // else return skeleton to fill out with instructions
         let newCmd = context.input[2] || skeleton.name;
-        let description = context.flags.description || skeleton.meta.description;
+        let description =
+          context.flags.description || skeleton.meta.description;
         let endpoint = context.flags.endpoint || skeleton.request.endpoint;
         let contact = context.flags.contact || skeleton.meta.contact;
         process.stderr.write(

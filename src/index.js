@@ -16,11 +16,11 @@ const lorem = async (commandInput) => {
     log(chalk.green(JSON.stringify({ action, flags, stdin, input })));
 
   if (Object.prototype.hasOwnProperty.call(actions, action)) {
-      const context = { ...commandInput, stdin };
-    
-      setContextFunctions(context); 
-      setFlagDefaults(context); // allow flag defaults to be set from ENV
-      actions[action].exec(context);
+    const context = { ...commandInput, stdin };
+
+    setContextFunctions(context);
+    setFlagDefaults(context); // allow flag defaults to be set from ENV
+    actions[action].exec(context);
   } else {
     log(chalk.red(`Action ${action} not found`));
     process.exit(1);

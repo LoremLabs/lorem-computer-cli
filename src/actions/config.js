@@ -5,7 +5,11 @@ const log = console.log;
 // config: get, set, del
 const exec = (context) => {
   if (context.input[1] === "get") {
-    log(`${JSON.stringify(context.config.get())}`);
+    if (context.flags.raw) {
+      log(context.config.get(context.input[2]));
+    } else {
+      log(`${JSON.stringify(context.config.get(context.input[2]), null, 2)}`);
+    }
   } else if (context.input[1] === "set") {
     if (context.flags.array) {
       // set array

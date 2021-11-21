@@ -1,7 +1,7 @@
 {
-  "name": "echo",
+  "name": "retrieve-url",
   "request": {
-    "endpoint": "http://api.dev.lorem.computer:3000/api/echo"
+    "endpoint": "http://api.dev.lorem.computer:3000/api/retrieve-url"
   },
   "meta": {
     "contact": "",
