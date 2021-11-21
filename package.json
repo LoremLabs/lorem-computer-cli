@@ -26,8 +26,7 @@
   },
   "files": [
     "lorem-computer-cli.js",
-    "src",
-    "package.json"
+    "src"
   ],
   "keywords": [
     "cli",
