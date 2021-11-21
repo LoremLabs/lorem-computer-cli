@@ -1,6 +1,6 @@
 {
   "name": "lorem-computer",
-  "version": "0.0.1-7",
+  "version": "0.0.1",
   "description": "Lorem command-line tool",
   "license": "MIT",
   "repository": "https://github.com/LoremLabs/lorem-computer-cli",
@@ -25,9 +25,9 @@
     "test": "echo nyet && exit 0"
   },
   "files": [
-	  "lorem-computer-cli.js",
-	  "src",
-	  "package.json"
+    "lorem-computer-cli.js",
+    "src",
+    "package.json"
   ],
   "keywords": [
     "cli",
