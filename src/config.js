@@ -27,6 +27,7 @@ const schema = {
 };
 
 const config = new Conf({
+  projectName: "lorem-computer",
   schema,
   fileExtension: "toml",
   serialize: (store) => {
