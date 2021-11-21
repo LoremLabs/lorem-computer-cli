@@ -24,7 +24,11 @@
     "release": "np",
     "test": "echo nyet && exit 0"
   },
-  "files": [],
+  "files": [
+	  "lorem-computer-cli.js",
+	  "src",
+	  "package.json"
+  ],
   "keywords": [
     "cli",
     "cli-app",
