@@ -61,3 +61,4 @@ const packageCommand = ({ commandJson }) => {
 };
 
 export { getFileIpfs, uploadIpfsWeb3Storage };
+

@@ -45,13 +45,20 @@ const defaultHelp = `
 const cli = meow(defaultHelp, {
   importMeta: import.meta,
   flags: {
+    transaction: {
+      type: "string",
+      default: ''
+    },
+    wallet: {
+      type: "string",
+      default: ''
+    }
     // debug: {
     //   type: "boolean",
     //   default: false,
     // }
   },
 });
-
 if (cli.input.length === 0 || cli.input[0] === "help") {
   process.stderr.write(`${defaultHelp}\n`);
   process.exit(0);

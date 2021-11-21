@@ -1,5 +1,6 @@
 import chalk from "chalk";
 import fetch from "node-fetch";
+import FormData from "form-data";
 
 import { bestNamespace } from "../lib/directory.js";
 import { getFileIpfs } from "../lib/ipfs.js";
@@ -62,6 +63,14 @@ const doCommand = async (context, command) => {
   // hit endpoint, pass along {stdin, flags, argv, ...}
   // TODO: Add AbortController, timeout
 
+  let options = {
+    method: "POST",
+    headers: {
+      'Content-Type': 'application/json' 
+      // 'Content-Type': 'multipart/form-data',
+    },
+  };
+
   const params = new URLSearchParams();
   for (const [key, value] of Object.entries(context.flags)) {
     // sensitive data scrub
@@ -73,8 +82,16 @@ const doCommand = async (context, command) => {
   if (context.input) {
     params.append("input", JSON.stringify(context.input));
   }
+
   if (context.stdin) {
-    params.append("stdin", context.stdin);
+    if (context.stdin.length < 100) {
+      params.append("stdin", context.stdin);
+    } else {
+      // formData.append("file", 'context.stdin || "abc"');
+      let buff = new Buffer(context.stdin);
+      let base64data = buff.toString('base64');
+      options.body = JSON.stringify({ stdin: base64data });
+    }
   }
 
   // TODO: add headers for signatures, etc
@@ -83,7 +100,7 @@ const doCommand = async (context, command) => {
     const fullUrl = `${url}?${params.toString()}`;
     context.debugLog(`Fetching ${fullUrl}`);
 
-    const response = await fetch(fullUrl);
+    const response = await fetch(fullUrl, options);
 
     if (response.status !== 200) {
       log(chalk.red(`Error: ${response.status}`));

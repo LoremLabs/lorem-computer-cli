@@ -1,11 +1,11 @@
 {
-  "name": "retrieve-url",
+  "name": "nftport",
   "request": {
-    "endpoint": "http://api.dev.lorem.computer:3000/api/retrieve-url"
+    "endpoint": "https://api.lorem.computer/api/nftport"
   },
   "meta": {
-    "contact": "",
-    "description": "Local Test to echo input"
+    "contact": "@mankins",
+    "description": "hackathon nftport"
   },
   "v": 1
 }
